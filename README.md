@@ -99,7 +99,12 @@ A example format of lower bound file can be found in lower_bounds/*.
 ### Fast Decoding
 In the original implementation of SGNMT and UID-Decoding, multi-gpu setting is not supported. Here, we provide a multiprocessing script python_scripts/mp_command_master.py for supporting multi-gpu setting.
 Specifically, we split the input files into pieces with 5 sentences per file and store the decoding commands like `CUDA_VISIBLE_DEVICES=0 bash decode.sh $input_file.1$` into a command file. And then, we use the mp_command_master.py for controling the actual decoding on different GPUs.
-For now, we don't have time for a complete document for how to use it step by step. But it will be ready soon.
+
+### DFS-Topk
+We provide a sample script for dfs topk.
+```
+python decode.py  --fairseq_path checkpoints/wmt14.en-fr.fconv-py/model.pt --fairseq_lang_pair en-fr --src_wmap checkpoints/wmap.en --trg_wmap checkpoints/wmap.fr --input_file checkpoints/wmt14.en-fr.fconv-py/newstest_bpe.txt.head10 --preprocessing word --postprocessing bpe@@ --decoder simpledfstopk --beam 10 --output_path $result_dir/test.out --outputs nbest_sep --num_log 100 --nbest 100 --simpledfs_topk 10
+```
 
 ### Evaluation Scripts
 The evaluation scripts lie in analysis/scripts. These bash scripts are used for various kind of analysis for topk results. To reproduce the results, p1lease replace $root with your $topk_path/analysis/scripts first. 
@@ -108,3 +113,5 @@ Here, we provide an example of evaluating our model outputs with one simple line
 cd analysis/scripts && bash call_compute_model_errors.sh
 ```
 Then, it can compute the model error metrics for our results `ende_dfstopk_wmt14.en-de.transformer_new` in analysis/archive directory.  
+
+For reproduce our results with COMET as reported in the paper, we refer the readers to analysis/comet_scripts/*.sh
