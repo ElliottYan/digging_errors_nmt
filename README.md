@@ -98,7 +98,7 @@ A example format of lower bound file can be found in lower_bounds/*.
 
 ### Fast Decoding
 In the original implementation of SGNMT and UID-Decoding, multi-gpu setting is not supported. Here, we provide a multiprocessing script python_scripts/mp_command_master.py for supporting multi-gpu setting.
-Specifically, we split the input files into pieces with 5 sentences per file and store the decoding commands like `CUDA_VISIBLE_DEVICES=0 bash decode.sh $input_file.1$ into a command file. And then, we use the mp_command_master.py for controling the actual decoding on different GPUs.
+Specifically, we split the input files into pieces with 5 sentences per file and store the decoding commands like `CUDA_VISIBLE_DEVICES=0 bash decode.sh $input_file.1$` into a command file. And then, we use the mp_command_master.py for controling the actual decoding on different GPUs.
 For now, we don't have time for a complete document for how to use it step by step. But it will be ready soon.
 
 ### Evaluation Scripts
