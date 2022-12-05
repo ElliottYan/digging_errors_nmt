@@ -1,3 +1,6 @@
+# Digging Errors in NMT: Evaluating and Understanding Model Errors from Partial Hypothesis Space
+This is the official code repository released for EMNLP 2022 main track paper "Digging Errors in NMT: Evaluating and Understanding Model Errors from Partial Hypothesis Space".
+
 # Exact Top-k Decoding
 Decoding library based on SGNMT: https://github.com/ucam-smt/sgnmt. See their [docs](http://ucam-smt.github.io/sgnmt/html/) for setting up a fairseq model to work with the library.
 
